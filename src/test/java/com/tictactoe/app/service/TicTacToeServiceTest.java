@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -22,7 +21,7 @@ public class TicTacToeServiceTest {
 	@BeforeEach
 	public void beforeEach()
 	{
-		MockitoAnnotations.openMocks(this);
+		ticTacToeService = new TicTacToeService();
 	}
 	
 	@Test
@@ -43,4 +42,16 @@ public class TicTacToeServiceTest {
 	    ticTacToeService.runGame();
 	    assertEquals("Congratulations! X's have won the Game", ticTacToeService.getPlayerStatus());
 	}
+	
+	@Test
+	public void checkthePlayerWinningVertically() {
+		List<String> playersMoves = Arrays.asList("1", "2", "3", "5", "4", "6", "7", "8", "9");
+		String delim = System.getProperty("line.separator");
+		String playerMovesTogether = String.join(delim, playersMoves);
+		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
+		System.setIn(in);
+		ticTacToeService.runGame();
+		assertEquals("Congratulations! X's have won the Game", ticTacToeService.getPlayerStatus());
+	}
+	
 }

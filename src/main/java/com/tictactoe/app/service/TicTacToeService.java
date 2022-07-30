@@ -70,7 +70,7 @@ public class TicTacToeService {
 	 * @return
 	 */
 	public String checkWinner() {
-		for (int a = 0; a < 3; a++) {
+		for (int a = 0; a < 6; a++) {
 			String line = "";
 			switch (a) {
 			case 0:
@@ -82,10 +82,21 @@ public class TicTacToeService {
 			case 2:
 				line = boardOfGame[6] + boardOfGame[7] + boardOfGame[8];
 				break;
+			case 3:
+				line = boardOfGame[0] + boardOfGame[3] + boardOfGame[6];
+				break;
+			case 4:
+				line = boardOfGame[1] + boardOfGame[4] + boardOfGame[7];
+				break;
+			case 5:
+				line = boardOfGame[2] + boardOfGame[5] + boardOfGame[8];
+				break;
 			}
 			if (line.equals("XXX")) {
 				return "X";
-			} 
+			} else if (line.equals("OOO")) {
+				return "O";
+			}
 		}
 
 		for (int a = 0; a < 9; a++) {
