@@ -54,4 +54,16 @@ public class TicTacToeServiceTest {
 		assertEquals("Congratulations! X's have won the Game", ticTacToeService.getPlayerStatus());
 	}
 	
+	@Test
+	public void checkthePlayerWinningDiagonal() {
+		List<String> playersMoves = Arrays.asList("1", "2", "3", "4", "5", "6", "9", "8", "7");
+		String delim = System.getProperty("line.separator");
+		String playerMovesTogether = String.join(delim, playersMoves);
+		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
+		System.setIn(in);
+		ticTacToeService.runGame();
+		assertEquals("Congratulations! X's have won the Game", ticTacToeService.getPlayerStatus());
+	}
+	
+	
 }

@@ -54,7 +54,7 @@ public class TicTacToeService {
 						turn = "X";
 					}
 					getDisplayBoard();
-					winner = checkWinner();
+					winner = checkPossibleWaysOfWinning();
 				}
 			}
 			if (!winner.isEmpty()) {
@@ -69,9 +69,9 @@ public class TicTacToeService {
 	 * This method used to check the winner as per the move
 	 * @return
 	 */
-	public String checkWinner() {
-		for (int a = 0; a < 6; a++) {
-			String line = "";
+	public String checkPossibleWaysOfWinning() {
+		for (int a = 0; a < 8; a++) {
+			String line = null;
 			switch (a) {
 			case 0:
 				line = boardOfGame[0] + boardOfGame[1] + boardOfGame[2];
@@ -90,6 +90,12 @@ public class TicTacToeService {
 				break;
 			case 5:
 				line = boardOfGame[2] + boardOfGame[5] + boardOfGame[8];
+				break;
+			case 6:
+				line = boardOfGame[0] + boardOfGame[4] + boardOfGame[8];
+				break;
+			case 7:
+				line = boardOfGame[2] + boardOfGame[4] + boardOfGame[6];
 				break;
 			}
 			if (line.equals("XXX")) {
