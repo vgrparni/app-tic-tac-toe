@@ -46,6 +46,10 @@ public class TicTacToeService {
 		try (Scanner in = new Scanner(System.in)) {
 			while ( winner.isEmpty()) {
 				int numInput = in.nextInt();
+				if (!(numInput > 0 && numInput <= 9)) {
+					log.info("Invalid input; re-enter slot number within 0-9 range:");
+					continue;
+				}
 				if (boardOfGame[numInput - 1].equals(String.valueOf(numInput))) {
 					boardOfGame[numInput - 1] = turn;
 					if (turn.equals("X")) {

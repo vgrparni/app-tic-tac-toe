@@ -87,5 +87,17 @@ public class TicTacToeServiceTest {
 		assertEquals("Hi Guys, Its a draw!, Enjoy the game and try again.", ticTacToeService.getPlayerStatus());
 	}
 	
+	@Test
+	public void checkGameWithInvalidRangeNumberAndContinue() {
+		List<String> playersMoves = Arrays.asList("1", "2", "10", "4", "5", "6", "7", "8","9","3");
+		String delim = System.getProperty("line.separator");
+		String playerMovesTogether = String.join(delim, playersMoves);
+		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
+		System.setIn(in);
+		ticTacToeService.runGame();
+		assertEquals("Hi Guys, Its a draw!, Enjoy the game and try again.", ticTacToeService.getPlayerStatus());
+	}
+	
+	
 	
 }
