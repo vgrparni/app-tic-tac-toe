@@ -1,6 +1,7 @@
 package com.tictactoe.app.service;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import org.slf4j.Logger;
@@ -45,9 +46,16 @@ public class TicTacToeService {
 
 		try (Scanner in = new Scanner(System.in)) {
 			while ( winner.isEmpty()) {
-				int numInput = in.nextInt();
-				if (!(numInput > 0 && numInput <= 9)) {
-					log.info("Invalid input; re-enter slot number within 0-9 range:");
+				int numInput;
+				try {
+					numInput = in.nextInt();
+					if (!(numInput > 0 && numInput <= 9)) {
+						log.error("Invalid input; re-enter slot number within 0-9 range:");
+						continue;
+					}
+				} catch (InputMismatchException e) {
+					log.error("Invalid input; re-enter slot number within 0-9 range:");
+					in.next();
 					continue;
 				}
 				if (boardOfGame[numInput - 1].equals(String.valueOf(numInput))) {
