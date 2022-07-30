@@ -57,7 +57,10 @@ public class TicTacToeService {
 					winner = checkPossibleWaysOfWinning();
 				}
 			}
-			if (!winner.isEmpty()) {
+			if (winner.equalsIgnoreCase("draw")) {
+				playerStatus = "Hi Guys, Its a draw!, Enjoy the game and try again.";
+				log.info("Hi Guys, Its a draw!, Enjoy the game and try again.");
+			} else {
 				playerStatus = "Congratulations! " + winner + "'s have won the Game";
 				log.info("Congratulations! " + winner + "'s have won! Thanks for playing.");
 			}
@@ -108,7 +111,8 @@ public class TicTacToeService {
 		for (int a = 0; a < 9; a++) {
 			if (Arrays.asList(boardOfGame).contains(String.valueOf(a + 1))) {
 				break;
-			}
+			} else if (a == 8)
+				return "draw";
 		}
 
 		log.info(turn + "'s turn; enter a slot number to place " + turn + " in:");

@@ -65,5 +65,27 @@ public class TicTacToeServiceTest {
 		assertEquals("Congratulations! X's have won the Game", ticTacToeService.getPlayerStatus());
 	}
 	
+	@Test
+	public void checktheSecondPlayerWinning() {
+		List<String> playersMoves = Arrays.asList("1", "2", "3", "5", "4", "8", "9", "6", "7");
+		String delim = System.getProperty("line.separator");
+		String playerMovesTogether = String.join(delim, playersMoves);
+		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
+		System.setIn(in);
+		ticTacToeService.runGame();
+		assertEquals("Congratulations! O's have won the Game", ticTacToeService.getPlayerStatus());
+	}
+	
+	@Test
+	public void checktheGameDraw() {
+		List<String> playersMoves = Arrays.asList("1", "2", "3", "4", "5", "9", "8", "7","6");
+		String delim = System.getProperty("line.separator");
+		String playerMovesTogether = String.join(delim, playersMoves);
+		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
+		System.setIn(in);
+		ticTacToeService.runGame();
+		assertEquals("Hi Guys, Its a draw!, Enjoy the game and try again.", ticTacToeService.getPlayerStatus());
+	}
+	
 	
 }
