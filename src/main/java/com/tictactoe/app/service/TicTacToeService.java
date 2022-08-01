@@ -16,6 +16,12 @@ public class TicTacToeService {
 	private String turnOfPlayer = PLAYER_X;
 	private final static String STATUS_DRAW = "draw";
 	private String playerStatus;
+	private final String FRAME_HF = "/---|---|---\\ \n";
+	private final String BOARD_LINE = "|-----------| \n";
+	private final String CELL_SEPARATOR = " | ";
+	private final String CELL_LIFT_SEPARATOR = "| ";
+	private final String CELL_RIGHT_SEPARATOR = " |";
+	private final String NEXT_LINE = "\n";
 
 	public String getPlayerStatus() {
 		return playerStatus;
@@ -28,14 +34,18 @@ public class TicTacToeService {
 	}
 
 	public String getDisplayBoard() {
-
-		String createBoard = "/---|---|---\\ \n" + "| " + squareBoard[0] + " | " + squareBoard[1] + " | "
-				+ squareBoard[2] + " | \n" + "|-----------| \n" + "| " + squareBoard[3] + " | " + squareBoard[4] + " | "
-				+ squareBoard[5] + " | \n" + "|-----------| \n" + "| " + squareBoard[6] + " | " + squareBoard[7] + " | "
-				+ squareBoard[8] + " | \n" + "/---|---|---\\ \n";
-		log.info("Game board : " + createBoard);
+		String createBoard = new StringBuffer().append(FRAME_HF).append(CELL_LIFT_SEPARATOR).append(squareBoard[0])
+				.append(CELL_SEPARATOR).append(squareBoard[1]).append(CELL_SEPARATOR).append(squareBoard[2])
+				.append(CELL_RIGHT_SEPARATOR).append(NEXT_LINE).append(BOARD_LINE).append(CELL_LIFT_SEPARATOR)
+				.append(squareBoard[3]).append(CELL_SEPARATOR).append(squareBoard[4]).append(CELL_SEPARATOR)
+				.append(squareBoard[5]).append(CELL_RIGHT_SEPARATOR).append(NEXT_LINE).append(BOARD_LINE)
+				.append(CELL_LIFT_SEPARATOR).append(squareBoard[6]).append(CELL_SEPARATOR).append(squareBoard[7])
+				.append(CELL_SEPARATOR).append(squareBoard[8]).append(CELL_RIGHT_SEPARATOR).append(NEXT_LINE)
+				.append(FRAME_HF).toString();
+		log.info("Game squareBoard :" + NEXT_LINE + createBoard);
 		return createBoard;
 	}
+
 
 	public void runTicTacToeGame() {
 		log.info("*********Game started!*********");

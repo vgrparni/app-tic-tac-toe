@@ -25,8 +25,8 @@ public class TicTacToeServiceTest {
 
 	@Test
 	public void displayDefaultGameBoard() {
-		String expectedResult = "/---|---|---\\ \n" + "| 1 | 2 | 3 | \n" + "|-----------| \n" + "| 4 | 5 | 6 | \n"
-				+ "|-----------| \n" + "| 7 | 8 | 9 | \n" + "/---|---|---\\ \n";
+		String expectedResult = "/---|---|---\\ \n" + "| 1 | 2 | 3 |\n" + "|-----------| \n" + "| 4 | 5 | 6 |\n"
+				+ "|-----------| \n" + "| 7 | 8 | 9 |\n" + "/---|---|---\\ \n";
 		ticTacToeService.loadDefaultBoard();
 		assertEquals(expectedResult, ticTacToeService.getDisplayBoard());
 	}
