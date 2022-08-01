@@ -86,8 +86,8 @@ public class TicTacToeService {
 				playerStatus = "Hi Guys, Its a draw!, Enjoy the game and try again.";
 				log.info("Hi Guys, Its a draw!, Enjoy the game and try again.");
 			} else {
-				playerStatus = "Congratulations! " + winStatusInfo + "'s have won the Game";
-				log.info("Congratulations! " + winStatusInfo + "'s have won! Thanks for playing.");
+				playerStatus = "Congratulations! " + winStatusInfo + " has won the Game";
+				log.info("Congratulations! {} has won the Game! Thanks for playing.",winStatusInfo);
 			}
 		}
 		log.info("*********Game Finished!*********");
@@ -147,7 +147,7 @@ public class TicTacToeService {
 				break;
 			}
 		}
-		log.info(turnOfPlayer + "'s turn; enter a slot number to place " + turnOfPlayer + " in:");
+		log.info("{}'s turn; enter a slot number to place in:",turnOfPlayer);
 		return winningStatus;
 	}
 

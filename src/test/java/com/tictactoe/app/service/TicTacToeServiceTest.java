@@ -39,7 +39,7 @@ public class TicTacToeServiceTest {
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
 		ticTacToeService.runTicTacToeGame();
-		assertEquals("Congratulations! X's have won the Game", ticTacToeService.getPlayerStatus());
+		assertEquals("Congratulations! X has won the Game", ticTacToeService.getPlayerStatus());
 	}
 
 	@Test
@@ -50,7 +50,7 @@ public class TicTacToeServiceTest {
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
 		ticTacToeService.runTicTacToeGame();
-		assertEquals("Congratulations! X's have won the Game", ticTacToeService.getPlayerStatus());
+		assertEquals("Congratulations! X has won the Game", ticTacToeService.getPlayerStatus());
 	}
 
 	@Test
@@ -61,7 +61,7 @@ public class TicTacToeServiceTest {
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
 		ticTacToeService.runTicTacToeGame();
-		assertEquals("Congratulations! X's have won the Game", ticTacToeService.getPlayerStatus());
+		assertEquals("Congratulations! X has won the Game", ticTacToeService.getPlayerStatus());
 	}
 
 	@Test
@@ -72,7 +72,7 @@ public class TicTacToeServiceTest {
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
 		ticTacToeService.runTicTacToeGame();
-		assertEquals("Congratulations! O's have won the Game", ticTacToeService.getPlayerStatus());
+		assertEquals("Congratulations! O has won the Game", ticTacToeService.getPlayerStatus());
 	}
 
 	@Test
