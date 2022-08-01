@@ -17,7 +17,7 @@ public class TicTacToeServiceTest {
 
 	@Spy
 	private TicTacToeService ticTacToeService;
-
+	private final String delim = System.getProperty("line.separator");
 	@BeforeEach
 	public void beforeEach() {
 		ticTacToeService = new TicTacToeService();
@@ -34,7 +34,6 @@ public class TicTacToeServiceTest {
 	@Test
 	public void checkthePlayerWinningHarizontal() {
 		List<String> playersMoves = Arrays.asList("1", "4", "2", "5", "3", "6", "7", "8", "9");
-		String delim = System.getProperty("line.separator");
 		String playerMovesTogether = String.join(delim, playersMoves);
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
@@ -45,7 +44,6 @@ public class TicTacToeServiceTest {
 	@Test
 	public void checkthePlayerWinningVertically() {
 		List<String> playersMoves = Arrays.asList("1", "2", "3", "5", "4", "6", "7", "8", "9");
-		String delim = System.getProperty("line.separator");
 		String playerMovesTogether = String.join(delim, playersMoves);
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
@@ -56,7 +54,6 @@ public class TicTacToeServiceTest {
 	@Test
 	public void checkthePlayerWinningDiagonal() {
 		List<String> playersMoves = Arrays.asList("1", "2", "3", "4", "5", "6", "9", "8", "7");
-		String delim = System.getProperty("line.separator");
 		String playerMovesTogether = String.join(delim, playersMoves);
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
@@ -67,7 +64,6 @@ public class TicTacToeServiceTest {
 	@Test
 	public void checktheSecondPlayerWinning() {
 		List<String> playersMoves = Arrays.asList("1", "2", "3", "5", "4", "8", "9", "6", "7");
-		String delim = System.getProperty("line.separator");
 		String playerMovesTogether = String.join(delim, playersMoves);
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
@@ -78,7 +74,6 @@ public class TicTacToeServiceTest {
 	@Test
 	public void checktheGameDraw() {
 		List<String> playersMoves = Arrays.asList("1", "2", "3", "4", "5", "9", "8", "7", "6");
-		String delim = System.getProperty("line.separator");
 		String playerMovesTogether = String.join(delim, playersMoves);
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
@@ -89,7 +84,6 @@ public class TicTacToeServiceTest {
 	@Test
 	public void checkGameWithInvalidRangeNumberAndContinue() {
 		List<String> playersMovesInvalidNumber = Arrays.asList("1", "2", "10", "4", "5", "6", "7", "8", "9", "3");
-		String delim = System.getProperty("line.separator");
 		String playerMovesTogether = String.join(delim, playersMovesInvalidNumber);
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
@@ -101,7 +95,6 @@ public class TicTacToeServiceTest {
 	public void checkGameWithInvalidCharacterAndContinue() {
 		List<String> playersMovesWithInvalidCharacter = Arrays.asList("1", "2", "%", "G", "4", "5", "6", "7", "8", "9",
 				"3");
-		String delim = System.getProperty("line.separator");
 		String playerMovesTogether = String.join(delim, playersMovesWithInvalidCharacter);
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
@@ -113,7 +106,6 @@ public class TicTacToeServiceTest {
 	public void checkGameWithSameSlotTouchingAgainMistakenly() {
 		List<String> playersMovesWithInvalidCharacter = Arrays.asList("1", "2", "2", "4", "4", "5", "6", "7", "8", "9",
 				"3");
-		String delim = System.getProperty("line.separator");
 		String playerMovesTogether = String.join(delim, playersMovesWithInvalidCharacter);
 		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
 		System.setIn(in);
