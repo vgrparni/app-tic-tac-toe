@@ -109,4 +109,16 @@ public class TicTacToeServiceTest {
 		assertEquals("Hi Guys, Its a draw!, Enjoy the game and try again.", ticTacToeService.getPlayerStatus());
 	}
 
+	@Test
+	public void checkGameWithSameSlotTouchingAgainMistakenly() {
+		List<String> playersMovesWithInvalidCharacter = Arrays.asList("1", "2", "2", "4", "4", "5", "6", "7", "8", "9",
+				"3");
+		String delim = System.getProperty("line.separator");
+		String playerMovesTogether = String.join(delim, playersMovesWithInvalidCharacter);
+		InputStream in = new ByteArrayInputStream(playerMovesTogether.getBytes());
+		System.setIn(in);
+		ticTacToeService.runTicTacToeGame();
+		assertEquals("Hi Guys, Its a draw!, Enjoy the game and try again.", ticTacToeService.getPlayerStatus());
+	}
+
 }

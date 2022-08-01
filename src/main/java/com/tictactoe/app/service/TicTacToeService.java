@@ -64,6 +64,9 @@ public class TicTacToeService {
 					}
 					getDisplayBoard();
 					winStatusInfo = checkPossibleWaysOfWinningAndGetStatus();
+				} else {
+					log.info("Slot already taken; re-enter slot number:");
+					continue;
 				}
 			}
 			if (winStatusInfo.equalsIgnoreCase("draw")) {
