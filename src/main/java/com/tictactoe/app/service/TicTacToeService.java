@@ -76,7 +76,7 @@ public class TicTacToeService {
 						turnOfPlayer = PLAYER_X;
 					}
 					getDisplayBoard();
-					winStatusInfo = checkPossibleWaysOfWinningAndGetStatus();
+					winStatusInfo = getWinningStatus();
 				} else {
 					log.info("Slot already taken; re-enter slot number:");
 					continue;
@@ -93,56 +93,62 @@ public class TicTacToeService {
 		log.info("*********Game Finished!*********");
 	}
 
-	/**
-	 * This method used to check the winner as per the move
-	 * 
-	 * @return
-	 */
-	public String checkPossibleWaysOfWinningAndGetStatus() {
-		for (int a = 0; a < 8; a++) {
-			String line = "";
-			switch (a) {
+	
+	public String getThePossibleWayOfWinning(int possibleCaseId) {
+		String possibleWinLine ="";
+			switch (possibleCaseId) {
 			case 0:
-				line = squareBoard[0] + squareBoard[1] + squareBoard[2];
+				possibleWinLine = squareBoard[0] + squareBoard[1] + squareBoard[2];
 				break;
 			case 1:
-				line = squareBoard[3] + squareBoard[4] + squareBoard[5];
+				possibleWinLine = squareBoard[3] + squareBoard[4] + squareBoard[5];
 				break;
 			case 2:
-				line = squareBoard[6] + squareBoard[7] + squareBoard[8];
+				possibleWinLine = squareBoard[6] + squareBoard[7] + squareBoard[8];
 				break;
 			case 3:
-				line = squareBoard[0] + squareBoard[3] + squareBoard[6];
+				possibleWinLine = squareBoard[0] + squareBoard[3] + squareBoard[6];
 				break;
 			case 4:
-				line = squareBoard[1] + squareBoard[4] + squareBoard[7];
+				possibleWinLine = squareBoard[1] + squareBoard[4] + squareBoard[7];
 				break;
 			case 5:
-				line = squareBoard[2] + squareBoard[5] + squareBoard[8];
+				possibleWinLine = squareBoard[2] + squareBoard[5] + squareBoard[8];
 				break;
 			case 6:
-				line = squareBoard[0] + squareBoard[4] + squareBoard[8];
+				possibleWinLine = squareBoard[0] + squareBoard[4] + squareBoard[8];
 				break;
 			case 7:
-				line = squareBoard[2] + squareBoard[4] + squareBoard[6];
+				possibleWinLine = squareBoard[2] + squareBoard[4] + squareBoard[6];
+				break;
+			default : break;
+			}
+		return possibleWinLine;
+		
+	}
+	
+	public String getWinningStatus() {
+		String winningStatus="";
+		for (int a = 0; a < 8; a++) {
+			String possibleline= getThePossibleWayOfWinning(a);
+			if (possibleline.equals("XXX")) {
+				winningStatus = PLAYER_X;
+				break;
+			} else if (possibleline.equals("OOO")) {
+				winningStatus = PLAYER_O;
 				break;
 			}
-			if (line != null && line.equals("XXX")) {
-				return PLAYER_X;
-			} else if (line.equals("OOO")) {
-				return PLAYER_O;
-			}
 		}
-
 		for (int a = 0; a < 9; a++) {
 			if (Arrays.asList(squareBoard).contains(String.valueOf(a + 1))) {
 				break;
-			} else if (a == 8)
-				return STATUS_DRAW;
+			} else if (a == 8) {
+				winningStatus = STATUS_DRAW;
+				break;
+			}
 		}
-
 		log.info(turnOfPlayer + "'s turn; enter a slot number to place " + turnOfPlayer + " in:");
-		return "";
+		return winningStatus;
 	}
 
 }
