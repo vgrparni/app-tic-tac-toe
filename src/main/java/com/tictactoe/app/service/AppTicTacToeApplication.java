@@ -5,9 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class AppTicTacToeApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(AppTicTacToeApplication.class, args);
+		TicTacToeService ticTacToeService = new TicTacToeService();
+		ticTacToeService.runTicTacToeGame();
+		
 	}
 
 }
